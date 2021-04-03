@@ -64,7 +64,7 @@
 1. Edit with vim/nano/etc **/etc/ssh/sshd_config**
 
         ... settings above ...
-        Port 222
+        Port 2222
         # AddressFamily any
         ListenAddress 0.0.0.0
         #ListenAddress ::        
