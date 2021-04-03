@@ -160,7 +160,16 @@
           ssh -p 2222 user@192.168.2.3
           # You should be prompted for password.
 
-   * If connecting with SSH worked, proceed to next step.     
+   * If connecting with SSH worked, proceed to next step.
+   * If you get error below, make sure that SSH service is started in the WSL2:
+      ~~~
+      ssh -p 2222 user@192.168.2.3
+      kex_exchange_identification: read: Connection reset by peer
+      Connection reset by 192.168.2.3 port 2222
+      ~~~
+
+      * Command to start SSH service `sudo service ssh start`
+
 
 ### rsync via ssh
 * SSH needs to be used with rsync, so that the data is encrypted during transfer. Rsync itself doesn't encrypt data during transfer.
