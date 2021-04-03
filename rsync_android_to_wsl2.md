@@ -32,7 +32,7 @@
    * vim is text editor that was used, but one can use what ever text editor they want. vim is powerful tool to when mastered, but learning curve can be steep. **nano** is easy to use for beginners.
    * man is just nice to have as one can check manual with the program, with command **man rsync** one can see how to use rsync
 
-         sudo apt-get update & upgrade
+         sudo apt-get update && upgrade
          sudo apt-get install rsync openssh-server vim man
 
  1. Create folder for rsyncing
