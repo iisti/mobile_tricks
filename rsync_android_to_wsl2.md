@@ -23,7 +23,27 @@
     
 * The opening of firewall could have been done also via Administrator Command Prompt with command:
 
-        netsh advfirewall firewall add rule name="SSH allow 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
+      netsh advfirewall firewall add rule name="SSH allow 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
+        
+* Check the rule
+    ~~~
+    PS C:\WINDOWS\system32> netsh advfirewall firewall show rule name="SSH allow 2222 for WSL2"
+
+    Rule Name:                            SSH allow 2222 for WSL2
+    ----------------------------------------------------------------------
+    Enabled:                              Yes
+    Direction:                            In
+    Profiles:                             Domain,Private,Public
+    Grouping:
+    LocalIP:                              Any
+    RemoteIP:                             Any
+    Protocol:                             TCP
+    LocalPort:                            2222
+    RemotePort:                           Any
+    Edge traversal:                       No
+    Action:                               Allow
+    Ok.
+    ~~~
 
 ## Configuring Debian WSL
 1. Install required packages
