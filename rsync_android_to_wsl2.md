@@ -240,3 +240,54 @@
     sent x.y bytes received x.y bytes x.y bytes/sec
     total size is x.y speedup is 1.00
     ~~~
+
+## Create user for ssh'ing from WSL to Anrdoid
+
+1. On Termux
+  
+    ~~~sh
+    # Check user
+    whoami
+      u0_a330
+    
+    # Set password
+    passwd
+    
+    # Start sshd
+    sshd
+    
+    # Check IP
+    ifconfig
+    ~~~
+
+1. On WSL
+
+    ~~~sh
+    # Generate ssh key
+    ssh-keygen -t ed25519 -C "iisti"
+
+    # Check the public SSH key
+    cat  ~/.ssh/id_ed25519_a55.pub
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAertyglExTiiHbasdfMUyMXrRBFNhQpQO6tf8asdfqwer12 iisti
+
+    # SSH into the Android device
+    ssh u0_a330@192.168.x.y
+
+    # Add the public SSH key into authorized_keys
+    echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAertyglExTiiHbasdfMUyMXrRBFNhQpQO6tf8asdfqwer12 iisti" >> .ssh/authorized_keys
+    
+    # Exit SSH
+    exit
+
+    # Create ssh config file for authenticating without password. Remember to adjust the file.
+    cat << EOF >> ~/.ssh/config
+    Host device01
+        Hostname 192.168.x.y
+        User u0_a330
+        IdentityFile ~/.ssh/id_ed25519
+        Port 8022
+    EOF
+
+    # SSH into the Android device
+    ssh device01
+    ~~~
